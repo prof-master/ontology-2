@@ -128,7 +128,7 @@ def register(request):
 def logout_func(request):
     logout(request)
     return redirect("auth")
-
+#aaaa
 # @login_required
 # def profile(request):
 #     return render(request, 'ontology_auth/profile.html')

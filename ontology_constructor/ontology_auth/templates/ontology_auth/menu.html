@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="side_menu_wrapper d-flex flex-column w-25 gap-5
+    ">
+
+
+        <a href="">
+            <p>Каталог онтологий</p>
+        </a>
+        <a href="">
+            <p>Мои онтологии</p>
+        </a>
+        <a href="">
+            <p>Личный кабинет</p>
+        </a>
+        <a href="">
+            <p>Создать онтологию</p>
+        </a>
+
+        {% if request.user.is_authenticated %}
+        AUTHED - USER NAME
+        {% else %}
+        GUEST
+        {% endif %}
+
+
+
+        <div class="usname_exit_wrapper">
+            <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">выйти</button>
+            </form>
+            <p>{{user.username}}</p>
+        </div>
+
+
+
+
+
+        <p>МГТУ ИМ Н.Э. Баумана</p>
+
+
+    </div>
+
+</body>
+
+</html>

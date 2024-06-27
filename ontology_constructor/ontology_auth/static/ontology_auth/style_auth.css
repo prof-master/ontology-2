@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+html {
+    height: 100%;
+}
 
-html {height: 100%;}
-
-body{
+body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
 }
-.create_account{
+
+.create_account {
     font-size: 24px;
     font-family: "Inter";
     font-weight: bold;
@@ -25,12 +27,14 @@ body{
     line-height: 24px;
     padding: 10px;
 }
+
 .ipt_st {
     background-color: white;
     border-radius: 8px;
     border: 1px solid #E0E0E0;
     padding: 8px;
 }
+
 input[type="text"] {
     background-color: white;
     border-radius: 8px;
@@ -38,6 +42,7 @@ input[type="text"] {
     padding: 8px;
     width: 100%;
 }
+
 input[type="password"] {
     background-color: white;
     border-radius: 8px;
@@ -46,10 +51,11 @@ input[type="password"] {
     width: 100%;
 }
 
-.forgot_password{
-    color:#828282
+.forgot_password {
+    color: #828282
 }
-.auth_wrapper_w{
+
+.auth_wrapper_w {
     width: 100%;
     height: 100%;
 }
@@ -61,19 +67,50 @@ input[type="text"]::-webkit-input-placeholder {
     font-family: "Inter", sans-serif;
     line-height: 30px;
     padding-left: 10px;
-
 }
+
 input[type="text"]::-moz-placeholder {
+    color: #ff0000;
+    font-weight: 350;
+    font-size: 18px;
+    font-family: "Inter", sans-serif;
+    line-height: 30px;
+    opacity: 1;
+    ;
+}
+
+input[type="password"]::-webkit-input-placeholder {
+    color: #828282;
+    font-weight: 350;
+    font-size: 18px;
+    font-family: "Inter", sans-serif;
+    line-height: 30px;
+    padding-left: 10px;
+}
+
+input[type="password"]::-moz-placeholder {
     color: #828282;
     font-weight: 350;
     font-size: 18px;
     font-family: "Inter", sans-serif;
     line-height: 30px;
     opacity: 1;
-;
+    ;
 }
-
 
 .auth_wrapper {
     width: 400px;
+}
+
+.a_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.forgot_wrapper {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
 }

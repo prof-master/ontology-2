@@ -19,17 +19,24 @@
         </div>
         <form method="POST" action="{%url 'auth'%}">
             {% csrf_token %}
-            <div class="auth_wrapper d-flex flex-column gap-3">
 
-                <input name="username" type="text" placeholder="Имя пользователя">
-                <input name="password" type="password" placeholder="Пароль">
-                <button type="submit">Login</button>
+            <div class="a_wrapper">
 
+
+                <div class="auth_wrapper d-flex flex-column gap-3">
+
+                    <input name="username" type="text" placeholder="Имя пользователя">
+                    <input name="password" type="password" placeholder="Пароль">
+                    <button class="btn-auth" type="submit">Войти</button>
+
+                </div>
+                <div class="forgot_wrapper">
+                    <a href="">
+                        <p>Забыли пароль?</p>
+                    </a>
+                </div>
             </div>
-            <a href="">
-                <p>Забыли пароль?</p>
-            </a>
-            Войти через VK ID
+            <!-- Войти через VK ID -->
         </form>
 
     </div>

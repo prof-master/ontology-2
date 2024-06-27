@@ -64,7 +64,17 @@ def delete_ontology(request, ontology_id=None):
     object = Ontology.objects.get(id=ontology_id)
     object.delete()
     return redirect('/ontology/list')
-    
+
+def delete_subject(request, subject_id=None):
+    object = Subject.objects.get(id=subject_id)
+    object.delete()
+    return redirect('/ontology/list')
+ 
+def delete_object(request, object_id=None):
+    object = Object.objects.get(id=object_id)
+    object.delete()
+    return redirect('/ontology/list')
+
 def update_ontology(request, ontology_id=None):
     object = Ontology.objects.get(id=ontology_id)
     object.delete()

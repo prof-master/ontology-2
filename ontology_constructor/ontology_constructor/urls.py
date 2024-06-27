@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from ontology_auth.views import index,auth,profile, constructor, add_ontology, ontology_list_1, register,ontology_detail, add_subject, add_object, add_rdf_type, delete_ontology,login,logout_func, update_ontology
+from ontology_auth.views import index,auth,profile, constructor, add_ontology, ontology_list_1, register,ontology_detail, add_subject, add_object, add_rdf_type, delete_ontology,login,logout_func, update_ontology, delete_subject, delete_object
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index,name='index'),
@@ -35,6 +35,8 @@ urlpatterns = [
     path('ontology/new/object/', add_object, name='add_object'),
     path('ontology/new/predicat/', add_rdf_type, name='add_rdf_type'),
     path('delete_ontology/<int:ontology_id>', delete_ontology, name='delete_ontology'),
+    path('delete_subject/<int:subject_id>', delete_subject, name='delete_subject'),
+    path('delete_object/<int:object_id>', delete_object, name='delete_object'),
     path('update_ontology/<int:ontology_id>', update_ontology, name='update_ontology'),
     # path('accounts/', include('django.contrib.auth.urls')),
         

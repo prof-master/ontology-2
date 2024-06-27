@@ -13,7 +13,8 @@ from django.contrib.auth import authenticate, login , logout
 
 def index(request):
     template  = render_to_string("ontology_auth/index.html")
-    return HttpResponse(template)
+    return render(request,"ontology_auth/index.html")
+
 
 def test_menu(request):
     template  = render_to_string("ontology_auth/menu.html")

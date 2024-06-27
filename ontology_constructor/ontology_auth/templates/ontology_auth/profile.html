@@ -1,60 +1,69 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'ontology_auth/style_profile.css' %}">
     <title>Document</title>
 </head>
 
 <body>
-    <H1>Мои онтологии</H1>
 
-    <div class="side_menu_wrapper d-flex flex-column w-25 gap-5
+    <div class="flex-conteiner">
+
+        <div class="side_menu_wrapper
     ">
+            {% if request.user.is_authenticated %}
 
-{% if request.user.is_authenticated %}
-<H1>Добро пожаловать</H1> 
-    <H1>{{request.user}}</H1>
-{% else %}
-    <h1>Войдите сударь</h1> <a href="{% url 'auth' %}">Войти</a>
-{% endif %}
+            <div class="user_info_wrapper">
+                <img class="profile_logo" src="{% static 'ontology_auth/alya profile photo.jpg'%}" alt="">
+                <p>{{request.user}}</p>
+            </div>
+
+            {% else %}
+
+            <div class="user_info_wrapper">
+                <img class="profile_logo" src="{% static 'ontology_auth/images.png'%}" alt="">
+                <p>Не авторизован</p>
+            </div>
+
+            {% endif %}
 
 
-        <a href="">
-            <p>Каталог онтологий</p>
-        </a>
-        <a href="">
-            <p>Мои онтологии</p>
-        </a>
-        <a href="">
-            <p>Личный кабинет</p>
-        </a>
-        <a href="">
-            <p>Создать онтологию</p>
-        </a>
+            <a href="">
+                <p>Каталог онтологий</p>
+            </a>
+            <a href="">
+                <p>Мои онтологии</p>
+            </a>
+            <a href="">
+                <p>Личный кабинет</p>
+            </a>
+            <a href="">
+                <p>Создать онтологию</p>
+            </a>
+            <hr> {% if request.user.is_authenticated %}
+            <img src="{% static 'ontology_auth/logout.png'%}" alt="">
+            <a href="{% url 'logout' %}">Выйти</a> {% else %}
+
+            <a href="{% url 'auth' %}">Войти</a> {% endif %}
+            <br>
+            <!-- <p>МГТУ ИМ Н.Э. Баумана</p> -->
+        </div>
+        <div class="data-conteiner">
+            <H1>Мои онтологии</H1>
+            <h1> Что-то </h1>
+        </div>
         <hr>
-        {% if request.user.is_authenticated %}
-        <a href="{% url 'logout' %}">Выйти</a>
-        {% else %}
-        <a href="{% url 'auth' %}">Войти</a>
-        {% endif %}
-
-
-
-
-
-
-        <p>МГТУ ИМ Н.Э. Баумана</p>
-
-
     </div>
 
 
-    <!-- <form action="{% url 'logout' %}" method="POST">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-success">выйти</button>
-    </form> -->
+
+
+
+
 </body>
 
 </html>

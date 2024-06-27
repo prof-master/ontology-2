@@ -26,9 +26,10 @@
 }
 
 .table-1 th:hover {
-    background: #828282; /* Цвет фона при наведении */
-    color: #fff;
+    background: #E0E0E0; /* Цвет фона при наведении */
+    color: black; /* Цвет текста при наведении */
 }
+
 .table-2 {
 	width: 100%;
 	margin-bottom: 20px;

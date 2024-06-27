@@ -54,7 +54,8 @@ def ontology_list_1(request, ontology_id=None):
         f2 = Q( access = 'Global' )
         ontologys = Ontology.objects.filter( f1)
     subjects=Subject.objects.filter(f1)
-    context= {'ontologys': ontologys, 'subjects': subjects}
+    objects=Object.objects.filter(f1)
+    context= {'ontologys': ontologys, 'subjects': subjects, 'objects': objects}
     if (request.GET.get('delete_ontology')):
         Ontology.objects.filter(id = request.GET.get('delete_ontology')).delete()
         return redirect('/ontology/list')
@@ -64,7 +65,17 @@ def delete_ontology(request, ontology_id=None):
     object = Ontology.objects.get(id=ontology_id)
     object.delete()
     return redirect('/ontology/list')
-    
+
+def delete_subject(request, subject_id=None):
+    object = Subject.objects.get(id=subject_id)
+    object.delete()
+    return redirect('/ontology/list')
+ 
+def delete_object(request, object_id=None):
+    object = Object.objects.get(id=object_id)
+    object.delete()
+    return redirect('/ontology/list')
+
 def update_ontology(request, ontology_id=None):
     object = Ontology.objects.get(id=ontology_id)
     object.delete()

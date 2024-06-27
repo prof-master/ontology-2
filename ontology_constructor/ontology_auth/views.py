@@ -49,13 +49,14 @@ def ontology_list_1(request, ontology_id=None):
     if request.user:
         f1 = Q( owner=request.user)
         f2 = Q( access = 'Global' )
-        ontologys = Ontology.objects.filter( f1 | f2 )
+        my_ontologys = Ontology.objects.filter( f1)
+        gl_ontologys = Ontology.objects.filter( f2)
     else:
         f2 = Q( access = 'Global' )
-        ontologys = Ontology.objects.filter( f1)
+        ontologys = Ontology.objects.filter( f2)
     subjects=Subject.objects.filter(f1)
     objects=Object.objects.filter(f1)
-    context= {'ontologys': ontologys, 'subjects': subjects, 'objects': objects}
+    context= {'my_ontologys': my_ontologys, 'gl_ontologys': gl_ontologys, 'subjects': subjects, 'objects': objects}
     if (request.GET.get('delete_ontology')):
         Ontology.objects.filter(id = request.GET.get('delete_ontology')).delete()
         return redirect('/ontology/list')

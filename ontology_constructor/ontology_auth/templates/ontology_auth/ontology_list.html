@@ -28,13 +28,14 @@
     <div style="margin-bottom:20px; margin-left: 30px">
         <table class="table-1">
             <tr>
-                <th onclick="ontology_list_func()" id="ontology_list_but">Онтологии</th>
+                <th onclick="my_ontology_list_func()" id="my_ontology_list_but">Мои онтологии</th>
+                <th onclick="gl_ontology_list_func()" id="gl_ontology_list_but">Общедоступные онтологии</th>
                 <th onclick="subject_list_func()" id="subject_list_but">Субъекты</th>
                 <th onclick="object_list_func()" id="object_list_but">Объекты</th>
             </tr>
         </table>
     </div>
-    <div id="ontology_list">
+    <div id="my_ontology_list">
         <table class="table-2">
             <thead class="inter-fz">
                 <tr>
@@ -44,7 +45,7 @@
                     <th>Создатель онтологии</th>
                 </tr>
             </thead>
-            {% for ontology in ontologys %}
+            {% for ontology in my_ontologys %}
             <div class="inter-fz" gap="20px">
                 <tr>
                     <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{ontology.name}}</td>
@@ -70,7 +71,34 @@
             {% endfor %}
         </table>
     </div>
-    <div id="subject_list">
+    <div id="gl_ontology_list">
+        <table class="table-2">
+            <thead class="inter-fz">
+                <tr>
+                    <th>Наименование онтологии</th>
+                    <th>Доступность онтологии</th>
+                    <th>Дата создания онтологии</th>
+                    <th>Создатель онтологии</th>
+                </tr>
+            </thead>
+            {% for ontology in gl_ontologys %}
+            <div class="inter-fz" gap="20px">
+                <tr>
+                    <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{ontology.name}}</td>
+                    <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{ontology.access}}</td>
+                    <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{ontology.created_at}}</td>
+                    <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{ontology.owner}}</td>
+                    
+                </tr>
+            </div>
+            {% empty %}
+            <div class="title_weapper inter-fz fs-2" style="margin-left:20px;">
+                <p>У вас пока нет онтологий!</p>
+            </div>
+            {% endfor %}
+        </table>
+    </div>
+    <div id="object_list">
         <table class="table-2">
             <thead class="inter-fz">
                 <tr>
@@ -79,12 +107,12 @@
                     <th>Создатель субъекта</th>
                 </tr>
             </thead>
-            {% for subject in subjects %}
+            {% for object in objects %}
             <div class="inter-fz" gap="20px">
                 <tr>
-                    <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{subject.name}}</td>
-                    <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{subject.created_at}}</td>
-                    <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{subject.owner}}</td>
+                    <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{object.name}}</td>
+                    <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{object.created_at}}</td>
+                    <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{object.owner}}</td>
                     <td>
                         <form action="" method="get">
                             <button class="btn_wrappr_1 inter-fz-1" name="update_ontology" value="{{ ontology.id }}">Редактировать</button>
@@ -92,18 +120,52 @@
                     </td>
                     <td>
                         <form action="" method="get">
-                            <button class="btn_wrappr_1 inter-fz-1" name="delete_ontology" value="{{ ontology.id }}">Удалить</button>
+                            <button class="btn_wrappr_1 inter-fz-1" name="delete_object" value="{{ object.id }}">Удалить</button>
                         </form>
                     </td>
                 </tr>
             </div>
             {% empty %}
             <div class="title_weapper inter-fz fs-2" style="margin-left:20px;">
-                <p>У вас пока нет субъектов!</p>
+                <p>У вас пока нет объектов!</p>
             </div>
             {% endfor %}
         </table>
     </div>
+        <div id="subject_list">
+            <table class="table-2">
+                <thead class="inter-fz">
+                    <tr>
+                        <th>Наименование субъекта</th>
+                        <th>Дата создания</th>
+                        <th>Создатель субъекта</th>
+                    </tr>
+                </thead>
+                {% for subject in subjects %}
+                <div class="inter-fz" gap="20px">
+                    <tr>
+                        <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{subject.name}}</td>
+                        <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{subject.created_at}}</td>
+                        <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{subject.owner}}</td>
+                        <td>
+                            <form action="" method="get">
+                                <button class="btn_wrappr_1 inter-fz-1" name="update_ontology" value="{{ ontology.id }}">Редактировать</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="" method="get">
+                                <button class="btn_wrappr_1 inter-fz-1" name="delete_ontology" value="{{ ontology.id }}">Удалить</button>
+                            </form>
+                        </td>
+                    </tr>
+                </div>
+                {% empty %}
+                <div class="title_weapper inter-fz fs-2" style="margin-left:20px;">
+                    <p>У вас пока нет субъектов!</p>
+                </div>
+                {% endfor %}
+            </table>
+        </div>
 </body>
 
 </html>

@@ -8,6 +8,7 @@
     font-variation-settings:
         "slnt" 0;
 }
+
 .inter-fz-1 {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
@@ -16,27 +17,40 @@
     font-variation-settings:
         "slnt" 0;
 }
+.table-1 {
+    border-bottom: 1px solid black;
+}
+.table-1 th {
+    padding-left: 25px;
+    padding-right: 25px;
+}
 
-.table {
+.table-1 th:hover {
+    background: #828282; /* Цвет фона при наведении */
+    color: #fff;
+}
+.table-2 {
 	width: 100%;
 	margin-bottom: 20px;
 	border: 1px solid #dddddd;
 	border-collapse: collapse; 
 }
-.table th {
+.table-2 th {
 	font-weight: bold;
 	padding: 5px;
 	background: #efefef;
 	border: 1px solid #dddddd;
 }
-.table td {
+.table-2 td {
 	border: 1px solid #dddddd;
 	padding: 5px;
 }
-tbody td:hover {
+
+.table-2 tr:hover {
     background: #828282; /* Цвет фона при наведении */
     color: #fff; /* Цвет текста при наведении */
    }
+
 .center_content {
     padding: 120px;
 }
@@ -52,6 +66,7 @@ tbody td:hover {
     padding: 3px, 3px, 3px, 3px;
 
 }
+
 .btn_wrappr_1>button {
     background-color: #E0E0E0;
     border-radius: 8px;

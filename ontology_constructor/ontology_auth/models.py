@@ -34,17 +34,31 @@ class Subject(models.Model):
     uri=models.CharField(max_length=100)
     description=models.TextField()
     created_at=models.DateTimeField(default=timezone.now)
-
+    owner=models.ForeignKey(
+        User,
+        related_name='owner_sub',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name=('Владелец')
+        )
     def __str__(self):
-        return self.uri
+        return self.name
 class Object(models.Model):
     name=models.CharField(max_length=100)
     uri=models.CharField(max_length=100)
     description=models.TextField()
     created_at=models.DateTimeField(default=timezone.now)
-
+    owner=models.ForeignKey(
+        User,
+        related_name='owner_obj',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name=('Владелец')
+        )
     def __str__(self):
-        return self.uri
+        return self.name
 class rdf_type(models.Model):
     name=models.CharField(max_length=100)
     uri=models.CharField(max_length=100)
@@ -57,20 +71,20 @@ class rdf_type(models.Model):
         )
     subject=models.ForeignKey(
         Subject,
-        related_name='ontology',
+        related_name='subject',
         on_delete=models.SET_NULL,
         blank=True,
         null=True
         )
     object=models.ForeignKey(
         Object,
-        related_name='ontology',
+        related_name='object',
         on_delete=models.SET_NULL,
         blank=True,
         null=True
         )
     def __str__(self):
-        return self.uri
+        return self.name
 
 
 class Post(models.Model):

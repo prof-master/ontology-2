@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+input[type="text"]::-moz-placeholder {
+    color: #828282;
+    font-weight: 350;
+    font-size: 18px;
+    font-family: "Inter", sans-serif;
+    line-height: 30px;
+    opacity: 1;
+;
+}
+.inter-fz {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0;
+}
+
+
+.center_content {
+    padding: 120px;
+}
+
+.btn_wrappr>button {
+    background-color: black;
+    border-radius: 8px;
+    border: black solid;
+    width: 124px;
+    height: 62px;
+    color: white;
+    font-family: "Inter", sans-serif;
+    padding: 24px, 32px, 24px, 32px;
+
+}
+
+.ipt_wrapper>input {
+    width: 467px;
+    color: gray;
+    border-radius: 8px;
+    border: #E0E0E0 solid 1px;
+    padding-left: 10px;
+    
+}
+
+
+.inter-font-64 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+}
+
+.pd-64 {
+    padding-top: 32px;
+}
+
+.fs-36
+{
+    font-size: 24px;
+}
+
+/* input[type="email"]::-webkit-input-placeholder {
+    
+    color: gray;
+    font: 18px;
+}
+input[type="email"]::-moz-placeholder {
+    text-align: center;
+    color: gray;
+} */
+
+
+.g-color{
+    color: #828282;
+}

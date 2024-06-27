@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import OntologyForm, SubjectForm, ObjectForm, rdf_typeForm, UserRegForm
 from .models import Ontology, Subject, Object, rdf_type
+from django.db.models import Q
 import os
 from django.contrib.auth import authenticate, login , logout
 
@@ -43,8 +44,16 @@ def constructor(request):
     return HttpResponse(template)
 
 def ontology_list_1(request, ontology_id=None):
-    ontologys= Ontology.objects.all()
-    context= {'ontologys': ontologys}
+    #ontologys= Ontology.objects.all()
+    if request.user:
+        f1 = Q( owner=request.user)
+        f2 = Q( access = 'Global' )
+        ontologys = Ontology.objects.filter( f1 | f2 )
+    else:
+        f2 = Q( access = 'Global' )
+        ontologys = Ontology.objects.filter( f1)
+    subjects=Subject.objects.filter(f1)
+    context= {'ontologys': ontologys, 'subjects': subjects}
     if (request.GET.get('delete_ontology')):
         Ontology.objects.filter(id = request.GET.get('delete_ontology')).delete()
         return redirect('/ontology/list')
@@ -55,6 +64,10 @@ def delete_ontology(request, ontology_id=None):
     object.delete()
     return redirect('/ontology/list')
     
+def update_ontology(request, ontology_id=None):
+    object = Ontology.objects.get(id=ontology_id)
+    object.delete()
+    return redirect('/ontology/list')
 
 def ontology_detail(request, ontology_id):
     ontology_cur= get_object_or_404(Ontology, id=ontology_id)
@@ -66,18 +79,25 @@ def add_ontology(request):
     if request.method == 'POST':
         form = OntologyForm(request.POST)
         if form.is_valid():
-            form.save('ontology')
+            ontology=form.save(commit=False)
+            ontology.owner=request.user
+            ontology.save()
             form=OntologyForm()
             return redirect('/ontology/list')
     else:
         form=OntologyForm()
         return render(request, 'ontology_auth/add_ontology.html', {'form': form})
 
+
 def add_subject(request):
     if request.method == 'POST':
         form_sub = SubjectForm(request.POST)
         if form_sub.is_valid():
-            form_sub.save('subject')
+            subject=form_sub.save(commit=False)
+            subject.owner=request.user
+            subject.save()
+            form=OntologyForm()
+            return redirect('/ontology/list')
             form_sub = SubjectForm()
             return redirect('/ontology/list')
     else:
@@ -88,7 +108,9 @@ def add_object(request):
     if request.method == 'POST':
         form_sub = ObjectForm(request.POST)
         if form_sub.is_valid():
-            form_sub.save('object')
+            object=form_sub.save(commit=False)
+            object.owner=request.user
+            object.save()
             form_sub = ObjectForm()
             return redirect('/ontology/list')
     else:
@@ -104,6 +126,9 @@ def add_rdf_type(request):
             return redirect('/ontology/list')
     else:
         form_sub=rdf_typeForm()
+        form_sub.fields["ontology"].queryset = Ontology.objects.filter(owner=request.user)
+        form_sub.fields["subject"].queryset = Subject.objects.filter(owner=request.user)
+        form_sub.fields["object"].queryset = Object.objects.filter(owner=request.user)
         return render(request, 'ontology_auth/add_rdf_type.html', {'form': form_sub})
 
 

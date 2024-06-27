@@ -94,6 +94,8 @@ def ontology_detail(request, ontology_id):
     return render(request, "ontology_auth/ontology_detail.html", context)
    
 def add_ontology(request):
+    if not request.user.is_authenticated:
+        return redirect('/auth')
     if request.method == 'POST':
         form = OntologyForm(request.POST)
         if form.is_valid():
@@ -108,14 +110,14 @@ def add_ontology(request):
 
 
 def add_subject(request):
+    if not request.user.is_authenticated:
+        return redirect('/auth')
     if request.method == 'POST':
         form_sub = SubjectForm(request.POST)
         if form_sub.is_valid():
             subject=form_sub.save(commit=False)
             subject.owner=request.user
             subject.save()
-            form=OntologyForm()
-            return redirect('/ontology/list')
             form_sub = SubjectForm()
             return redirect('/ontology/list')
     else:
@@ -123,6 +125,8 @@ def add_subject(request):
         return render(request, 'ontology_auth/add_subject.html', {'form': form_sub})
 
 def add_object(request):
+    if not request.user.is_authenticated:
+        return redirect('/auth')
     if request.method == 'POST':
         form_sub = ObjectForm(request.POST)
         if form_sub.is_valid():
@@ -136,6 +140,8 @@ def add_object(request):
         return render(request, 'ontology_auth/add_object.html', {'form': form_sub})
     
 def add_rdf_type(request):
+    if not request.user.is_authenticated:
+        return redirect('/auth')
     if request.method == 'POST':
         form_sub = rdf_typeForm(request.POST)
         if form_sub.is_valid():

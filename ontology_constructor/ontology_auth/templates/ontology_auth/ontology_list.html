@@ -38,12 +38,12 @@
     <div id="my_ontology_list">
         <table class="table-2">
             <thead class="inter-fz">
-                <tr>
+                
                     <th>Наименование онтологии</th>
                     <th>Доступность онтологии</th>
                     <th>Дата создания онтологии</th>
                     <th>Создатель онтологии</th>
-                </tr>
+                
             </thead>
             {% for ontology in my_ontologys %}
             <div class="inter-fz" gap="20px">
@@ -74,12 +74,12 @@
     <div id="gl_ontology_list">
         <table class="table-2">
             <thead class="inter-fz">
-                <tr>
+                
                     <th>Наименование онтологии</th>
                     <th>Доступность онтологии</th>
                     <th>Дата создания онтологии</th>
                     <th>Создатель онтологии</th>
-                </tr>
+                
             </thead>
             {% for ontology in gl_ontologys %}
             <div class="inter-fz" gap="20px">
@@ -101,11 +101,11 @@
     <div id="object_list">
         <table class="table-2">
             <thead class="inter-fz">
-                <tr>
+                
                     <th>Наименование субъекта</th>
                     <th>Дата создания</th>
                     <th>Создатель субъекта</th>
-                </tr>
+                
             </thead>
             {% for object in objects %}
             <div class="inter-fz" gap="20px">
@@ -135,11 +135,11 @@
         <div id="subject_list">
             <table class="table-2">
                 <thead class="inter-fz">
-                    <tr>
+                    
                         <th>Наименование субъекта</th>
                         <th>Дата создания</th>
                         <th>Создатель субъекта</th>
-                    </tr>
+                   
                 </thead>
                 {% for subject in subjects %}
                 <div class="inter-fz" gap="20px">
@@ -154,7 +154,7 @@
                         </td>
                         <td>
                             <form action="" method="get">
-                                <button class="btn_wrappr_1 inter-fz-1" name="delete_ontology" value="{{ ontology.id }}">Удалить</button>
+                                <button class="btn_wrappr_1 inter-fz-1" name="delete_subject" value="{{ subject.id }}">Удалить</button>
                             </form>
                         </td>
                     </tr>

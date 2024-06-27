@@ -29,7 +29,7 @@
     background: #E0E0E0; /* Цвет фона при наведении */
     color: black; /* Цвет текста при наведении */
 }
-
+ 
 .table-2 {
 	width: 100%;
 	margin-bottom: 20px;
@@ -50,8 +50,8 @@
 .table-2 tr:hover {
     background: #828282; /* Цвет фона при наведении */
     color: #fff; /* Цвет текста при наведении */
-   }
-
+   } 
+   
 .center_content {
     padding: 120px;
 }

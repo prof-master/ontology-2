@@ -1,3 +1,6 @@
+window.onload = function() {
+    my_ontology_list_func();
+  }
 function delete_ontology(){
     location.href="{% url 'delete_ontology/' object.id %}";
 }

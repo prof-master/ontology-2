@@ -107,7 +107,21 @@
     padding-left: 10px;
     
 }
-
+.button {
+    background-color: #E0E0E0;
+    border-radius: 8px;
+    border: #E0E0E0;
+    width: 200px;
+    height: 30px;
+    color: black;
+    font-family: "Inter", sans-serif;
+    padding: 3px, 3px, 3px, 3px;
+    
+}
+.button:hover {
+    background-color:#828282;
+    transition: 0.7s;
+}
 
 .inter-font-64 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

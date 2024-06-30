@@ -36,7 +36,11 @@
     </form>
     
     
-    <button class="button inter-fz fs-6" onclick="edited()" id="edit">Редактировать</button>
+    {% if request.user.is_authenticated %}
+    {% if request.user.id == rdf_type.ontology.owner.id %}
+    <button class="button" onclick="edited()" id="edit">Редактировать</button>
+    {% endif %}
+    {% endif %}
     
     
 </body>

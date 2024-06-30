@@ -18,9 +18,11 @@
     </div>
     <form method="POST" action="/ontology/{{ontology.id}}/update">
         {% csrf_token %}
-        {% for field in form %}
-             {{field}}
-        {% endfor %}
+        <div class="container-1">
+            {% for field in form %}
+                {{field}}
+            {% endfor %}
+        </div>
         <div class="inter-fz fs-4" gap="20 px">
             {{ ontology.created_at}}
         </div>
@@ -28,10 +30,11 @@
             <button class="button" type="submit" id="subm" name="subm_ont" value="{{ ontology.id }}">Сохранить</button>
         </div>
     </form>
-    
-    
+    {% if request.user.is_authenticated %}
+    {% if request.user.id == ontology.owner.id %}
     <button class="button" onclick="edited()" id="edit">Редактировать</button>
-    
+    {% endif %}
+    {% endif %}
     {% block content %}
     <div class="title_weapper inter-fz fs-4" gap="20 px">
         Список предикатов

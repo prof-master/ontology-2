@@ -22,7 +22,7 @@
     -moz-transition: left 0.3s;
     transition: left 0.3s;
     /* определяем цвет фона панели */
-    background: #16a085;
+    background: black;
     /* поверх других элементов */
     z-index: 2000;
 }

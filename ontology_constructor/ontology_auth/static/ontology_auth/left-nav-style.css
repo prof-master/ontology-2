@@ -41,7 +41,7 @@
     /* определяем цвет фона переключателя
      * чаще вчего в соответствии с цветом фона панели
     */
-    background: inherit;
+    background: black;
     /* цвет текста */
     color: #dadada;
     /* вид курсора */
@@ -296,7 +296,7 @@ body {
 
 .nav>ul>li>a:hover:before {
     width: 0%;
-    background: #3bc1a0;
+    background: white;
     -webkit-transition: width .5s ease;
     transition: width .5s ease;
 }

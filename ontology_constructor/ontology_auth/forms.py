@@ -52,7 +52,7 @@ class UserRegForm(UserCreationForm):
     email = forms.EmailField()
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1']
+        fields = ['username', 'email', 'password1','last_name']
     def __init__(self, *args, **kwargs):
         super(UserRegForm, self).__init__(*args, **kwargs)
         del self.fields['password2']

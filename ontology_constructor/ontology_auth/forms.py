@@ -30,7 +30,7 @@ class ObjectForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(ObjectForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update({'class': '.ipt_wrapper', "size": "80", "required": True})
-        self.fields['description'].widget.attrs.update({"size": "80", "width": "40", "required": True})
+        self.fields['description'].widget.attrs.update({"size": "80", "width": "200", "required": True})
         #self.fields['name'].widget.attrs.update("size": "40")
         
 class rdf_typeForm(ModelForm):
@@ -39,8 +39,8 @@ class rdf_typeForm(ModelForm):
         fields = ['name', 'description', 'object', 'subject', 'ontology']
     def __init__(self, *args, **kwargs):
         super(rdf_typeForm, self).__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs.update({'class': '.ipt_wrapper', "size": "80", "required": True})
-        self.fields['description'].widget.attrs.update({"size": "200", "width": "80", "required": True})
+        self.fields['name'].widget.attrs.update({"size": "80", "required": True})
+        self.fields['description'].widget.attrs.update({ "size": "200", "width": "80", "required": True})
         #self.fields['name'].widget.attrs.update("size": "40")
 
 

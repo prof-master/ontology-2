@@ -45,10 +45,10 @@ class Subject(models.Model):
     def __str__(self):
         return self.name
 class Object(models.Model):
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=100, verbose_name=('Наименование'))
     uri=models.CharField(max_length=100)
-    description=models.TextField()
-    created_at=models.DateTimeField(default=timezone.now)
+    description=models.TextField(verbose_name=('Описание'))
+    created_at=models.DateTimeField(default=timezone.now, verbose_name=('Дата создания'))
     owner=models.ForeignKey(
         User,
         related_name='owner_obj',

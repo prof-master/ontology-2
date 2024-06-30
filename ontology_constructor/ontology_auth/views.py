@@ -65,33 +65,96 @@ def ontology_list_1(request, ontology_id=None):
     if (request.GET.get('delete_ontology')):
         Ontology.objects.filter(id = request.GET.get('delete_ontology')).delete()
         return redirect('/ontology/list')
+    if (request.GET.get('delete_subject')):
+        Subject.objects.filter(id = request.GET.get('delete_subject')).delete()
+        return redirect('/ontology/list')
+    if (request.GET.get('delete_object')):
+        Object.objects.filter(id = request.GET.get('delete_object')).delete()
+        return redirect('/ontology/list')
     return render(request, "ontology_auth/ontology_list.html", context)
 
-def delete_ontology(request, ontology_id=None):
-    object = Ontology.objects.get(id=ontology_id)
-    object.delete()
-    return redirect('/ontology/list')
-
-def delete_subject(request, subject_id=None):
-    object = Subject.objects.get(id=subject_id)
-    object.delete()
-    return redirect('/ontology/list')
- 
-def delete_object(request, object_id=None):
-    object = Object.objects.get(id=object_id)
-    object.delete()
-    return redirect('/ontology/list')
 
 def update_ontology(request, ontology_id=None):
-    object = Ontology.objects.get(id=ontology_id)
-    object.delete()
-    return redirect('/ontology/list')
+    ontology_cur= get_object_or_404(Ontology, id=ontology_id)
+    if request.method == 'POST':
+        form = OntologyForm(request.POST, instance=ontology_cur)
+        if form.is_valid():
+            subject=form.save(commit=False)
+            subject.owner=request.user
+            subject.save()
+        else:
+            print(form.errors)
+        return redirect('/ontology/'+ str(ontology_cur.id))
+        
+
 
 def ontology_detail(request, ontology_id):
     ontology_cur= get_object_or_404(Ontology, id=ontology_id)
     rdf_types=rdf_type.objects.filter(ontology=ontology_cur)
-    context= {'rdf_types': rdf_types, 'ontology': ontology_cur}
+    form=OntologyForm(instance=ontology_cur)
+    context= {'rdf_types': rdf_types, 'ontology': ontology_cur, 'form': form}
     return render(request, "ontology_auth/ontology_detail.html", context)
+def object_update(request, object_id=None):
+    object_cur= get_object_or_404(Object, id=object_id)
+    if request.method == 'POST':
+        form = ObjectForm(request.POST, instance=object_cur)
+        if form.is_valid():
+            subject=form.save(commit=False)
+            subject.owner=request.user
+            subject.save()
+        else:
+            print(form.errors)
+        return redirect('/object/'+ str(object_cur.id))
+      
+def object_detail(request, object_id):
+    object_cur= get_object_or_404(Object, id=object_id)
+    rdf_types=rdf_type.objects.filter(object=object_cur)
+    form=ObjectForm(instance=object_cur)
+    if request.method == 'POST':
+        form = ObjectForm(request.POST, instance=object_cur)
+        if form.is_valid():
+            form.save()
+            return redirect('/ontology/'+ str(object_cur.id))
+    context= {'rdf_types': rdf_types, 'object': object_cur, 'form': form}
+    return render(request, "ontology_auth/object_detail.html", context)
+   
+def subject_update(request, subject_id=None):
+    subject_cur= get_object_or_404(Subject, id=subject_id)
+    if request.method == 'POST':
+        form = SubjectForm(request.POST, instance=subject_cur)
+        if form.is_valid():
+            subject=form.save(commit=False)
+            subject.owner=request.user
+            subject.save()
+        else:
+            print(form.errors)
+        return redirect('/subject/'+ str(subject_cur.id))
+      
+def subject_detail(request, subject_id):
+    subject_cur= get_object_or_404(Subject, id=subject_id)
+    rdf_types=rdf_type.objects.filter(subject=subject_cur)
+    form=SubjectForm(instance=subject_cur)
+    context= {'rdf_types': rdf_types, 'subject': subject_cur, 'form': form}
+    return render(request, "ontology_auth/subject_detail.html", context)
+   
+   
+def rdf_type_update(request, rdf_type_id=None):
+    rdf_type_cur= get_object_or_404(rdf_type, id=rdf_type_id)
+    if request.method == 'POST':
+        form = rdf_typeForm(request.POST, instance=rdf_type_cur)
+        if form.is_valid():
+            subject=form.save(commit=False)
+            subject.owner=request.user
+            subject.save()
+        else:
+            print(form.errors)
+        return redirect('/rdf_type/'+ str(rdf_type_cur.id))
+      
+def rdf_type_detail(request, rdf_type_id):
+    rdf_type_cur= get_object_or_404(rdf_type, id=rdf_type_id)
+    form=rdf_typeForm(instance=rdf_type_cur)
+    context= {'rdf_type': rdf_type_cur, 'form': form}
+    return render(request, "ontology_auth/rdf_type_detail.html", context)
    
 def add_ontology(request):
     if not request.user.is_authenticated:

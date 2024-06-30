@@ -16,8 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from ontology_auth.views import index,auth,profile, constructor, add_ontology, ontology_list_1, register,ontology_detail, add_subject, add_object, add_rdf_type, delete_ontology,login,logout_func, update_ontology, delete_subject, delete_object
-from ontology_auth.views import index,auth,profile, test_menu, constructor, add_ontology, ontology_list_1, register,ontology_detail, add_subject, add_object, add_rdf_type, delete_ontology,login,logout_func, update_ontology
+from ontology_auth.views import index,auth,profile, constructor, add_ontology, ontology_list_1, register,ontology_detail, add_subject, add_object, add_rdf_type, login,logout_func, update_ontology, object_update, subject_detail, subject_update, rdf_type_detail, rdf_type_update
+from ontology_auth.views import index,auth,profile, test_menu, constructor, add_ontology, ontology_list_1, register,ontology_detail, add_subject, add_object, add_rdf_type, login,logout_func, update_ontology, object_detail
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index,name='index'),
@@ -30,14 +30,17 @@ urlpatterns = [
     path('constructor/',constructor,name='constructor'),
     path('ontology/list/',ontology_list_1,name='ontology_list_1'),
     path('ontology/<int:ontology_id>/',ontology_detail,name='ontology_detail'),
+    path('object/<int:object_id>/',object_detail,name='object_detail'),
+    path('object/<int:object_id>/update',object_update,name='object_update'),
+    path('subject/<int:subject_id>/',subject_detail,name='subject_detail'),
+    path('subject/<int:subject_id>/update',subject_update,name='subject_update'),
+    path('rdf_type/<int:rdf_type_id>/',rdf_type_detail,name='rdf_type_detail'),
+    path('rdf_type/<int:rdf_type_id>/update',rdf_type_update,name='rdf_type_update'),
     path('ontology/new/', add_ontology, name='add_ontology'),
     path('ontology/new/subject/', add_subject, name='add_subject'),
     path('ontology/new/object/', add_object, name='add_object'),
     path('ontology/new/predicat/', add_rdf_type, name='add_rdf_type'),
-    path('delete_ontology/<int:ontology_id>', delete_ontology, name='delete_ontology'),
-    path('delete_subject/<int:subject_id>', delete_subject, name='delete_subject'),
-    path('delete_object/<int:object_id>', delete_object, name='delete_object'),
-    path('update_ontology/<int:ontology_id>', update_ontology, name='update_ontology'),
+    path('ontology/<int:ontology_id>/update', update_ontology, name='update_ontology'),
 
         
 ]

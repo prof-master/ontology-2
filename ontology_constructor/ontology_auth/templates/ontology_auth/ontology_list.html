@@ -20,9 +20,9 @@
     </div>
     <div class="title_weapper inter-fz fs-4" style="margin-left:20px;">
         <div class="btn_wrappr inter-fz-1 fs-4" >
-            <button class="btn_wrappr_1 inter-fz-1" style="margin-left:40px;" onclick="window.location.href='/ontology/new/subject/'; return false">Создать субъект</button>
-            <button class="btn_wrappr_1 inter-fz-1" style="margin-left:40px;" onclick="window.location.href='/ontology/new/object/'; return false">Создать объект</button>
-            <button class="btn_wrappr_1 inter-fz-1" style="margin-left:40px;" onclick="window.location.href='/ontology/new/predicat/'; return false">Создать предикат</button>
+            <button class="btn_wrappr_1 inter-fz-1" style="margin-left:80px;" onclick="window.location.href='/ontology/new/subject/'; return false">Создать субъект</button>
+            <button class="btn_wrappr_1 inter-fz-1" style="margin-left:80px;" onclick="window.location.href='/ontology/new/object/'; return false">Создать объект</button>
+            <button class="btn_wrappr_1 inter-fz-1" style="margin-left:80px;" onclick="window.location.href='/ontology/new/predicat/'; return false">Создать предикат</button>
         </div>
     </div>
     <div style="margin-bottom:20px; margin-left: 30px">
@@ -43,7 +43,7 @@
                     <th>Доступность онтологии</th>
                     <th>Дата создания онтологии</th>
                     <th>Создатель онтологии</th>
-                
+                    <th></th>
             </thead>
             {% for ontology in my_ontologys %}
             <div class="inter-fz" gap="20px">
@@ -52,11 +52,6 @@
                     <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{ontology.access}}</td>
                     <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{ontology.created_at}}</td>
                     <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{ontology.owner}}</td>
-                    <td>
-                        <form action="" method="get">
-                            <button class="btn_wrappr_1 inter-fz-1" name="update_ontology" value="{{ ontology.id }}">Редактировать</button>
-                        </form>
-                    </td>
                     <td>
                         <form action="" method="get">
                             <button class="btn_wrappr_1 inter-fz-1" name="delete_ontology" value="{{ ontology.id }}">Удалить</button>
@@ -79,7 +74,6 @@
                     <th>Доступность онтологии</th>
                     <th>Дата создания онтологии</th>
                     <th>Создатель онтологии</th>
-                
             </thead>
             {% for ontology in gl_ontologys %}
             <div class="inter-fz" gap="20px">
@@ -105,19 +99,14 @@
                     <th>Наименование субъекта</th>
                     <th>Дата создания</th>
                     <th>Создатель субъекта</th>
-                
+                    <th></th>
             </thead>
             {% for object in objects %}
             <div class="inter-fz" gap="20px">
                 <tr>
-                    <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{object.name}}</td>
-                    <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{object.created_at}}</td>
-                    <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{object.owner}}</td>
-                    <td>
-                        <form action="" method="get">
-                            <button class="btn_wrappr_1 inter-fz-1" name="update_ontology" value="{{ ontology.id }}">Редактировать</button>
-                        </form>
-                    </td>
+                    <td class="inter-fz-1" onclick="window.location.href='/object/{{ object.id }}'; return false">{{object.name}}</td>
+                    <td class="inter-fz-1" onclick="window.location.href='/object/{{ object.id }}'; return false">{{object.created_at}}</td>
+                    <td class="inter-fz-1" onclick="window.location.href='/object/{{ object.id }}'; return false">{{object.owner}}</td>
                     <td>
                         <form action="" method="get">
                             <button class="btn_wrappr_1 inter-fz-1" name="delete_object" value="{{ object.id }}">Удалить</button>
@@ -139,19 +128,14 @@
                         <th>Наименование субъекта</th>
                         <th>Дата создания</th>
                         <th>Создатель субъекта</th>
-                   
+                        <th></th>
                 </thead>
                 {% for subject in subjects %}
                 <div class="inter-fz" gap="20px">
                     <tr>
-                        <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{subject.name}}</td>
-                        <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{subject.created_at}}</td>
-                        <td class="inter-fz-1" onclick="window.location.href='/ontology/{{ ontology.id }}'; return false">{{subject.owner}}</td>
-                        <td>
-                            <form action="" method="get">
-                                <button class="btn_wrappr_1 inter-fz-1" name="update_ontology" value="{{ ontology.id }}">Редактировать</button>
-                            </form>
-                        </td>
+                        <td class="inter-fz-1" onclick="window.location.href='/subject/{{ subject.id }}'; return false">{{subject.name}}</td>
+                        <td class="inter-fz-1" onclick="window.location.href='/subject/{{ subject.id }}'; return false">{{subject.created_at}}</td>
+                        <td class="inter-fz-1" onclick="window.location.href='/subject/{{ subject.id }}'; return false">{{subject.owner}}</td>
                         <td>
                             <form action="" method="get">
                                 <button class="btn_wrappr_1 inter-fz-1" name="delete_subject" value="{{ subject.id }}">Удалить</button>

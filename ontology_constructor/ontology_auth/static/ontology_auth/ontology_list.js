@@ -4,6 +4,10 @@ window.onload = function() {
 function delete_ontology(){
     location.href="{% url 'delete_ontology/' object.id %}";
 }
+function del_sub(subject_id)
+{
+    window.location = '/delete_subject/'+subject_id;
+}
 function subject_list_func() { 
     let but_sub = document.getElementById("subject_list_but");
     let but_my_ont = document.getElementById("my_ontology_list_but");
@@ -82,3 +86,8 @@ function gl_ontology_list_func() {
 function clicker() {
     document.getElementsByClassName('table-2')[0].style.display = "none"
   }
+
+function sub_click()
+{
+    window.location.href='/subject/' + String(subject_id); 
+}

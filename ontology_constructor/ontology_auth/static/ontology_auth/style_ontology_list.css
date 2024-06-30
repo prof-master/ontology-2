@@ -8,7 +8,9 @@
     font-variation-settings:
         "slnt" 0;
 }
-
+.center{
+    vertical-align: middle;
+}
 .inter-fz-1 {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
@@ -42,6 +44,13 @@
 	background: #efefef;
 	border: 1px solid #dddddd;
 }
+.table-2 th:hover {
+	font-weight: bold;
+	padding: 5px;
+    color: black;
+	background: #efefef;
+	border: 1px solid #dddddd;
+}
 .table-2 td {
 	border: 1px solid #dddddd;
 	padding: 5px;
@@ -66,6 +75,7 @@
     font-family: "Inter", sans-serif;
     padding: 3px, 3px, 3px, 3px;
     margin-bottom: 40px;
+    text-align: center;
 
 }
 .btn_wrappr {
@@ -82,6 +92,7 @@
     color: black;
     font-family: "Inter", sans-serif;
     padding: 3px, 3px, 3px, 3px;
+    margin-left: 40px;
 
 }
 .btn_wrappr_1:hover {

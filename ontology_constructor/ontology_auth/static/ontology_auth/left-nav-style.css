@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /**
  * Переключаемая боковая панель навигации
  * выдвигающаяся по клику слева
@@ -22,7 +24,7 @@
     -moz-transition: left 0.3s;
     transition: left 0.3s;
     /* определяем цвет фона панели */
-    background: #16a085;
+    background: #000000;
     /* поверх других элементов */
     z-index: 2000;
 }
@@ -281,7 +283,7 @@ body {
     bottom: 0;
     height: 1px;
     width: 100%;
-    background: #3bc1a0;
+    background: #ffffff;
     -webkit-transition: width .5s ease;
     transition: width .5s ease;
 }

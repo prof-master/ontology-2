@@ -17,21 +17,21 @@
             <div class="title_weapper inter-fz fs-2" style="margin-left:20px;">
                 <p>Создание предиката</p>
             </div>
+        </div> 
+        {% csrf_token %}
+        {{form.name.label_tag}}
+        <div>{{form.name}}</div>
+        {{form.description.label_tag}}
+        <div>{{form.description}}</div>
+        
+        <div class="container-1">
+            {{form.subject.label_tag}}
+            <div>{{form.subject}}</div>
+            {{form.object.label_tag}}
+            <div>{{form.object}}</div>
+            {{form.ontology.label_tag}}
+            <div>{{form.ontology}}</div>
         </div>
-        {% csrf_token %} 
-        {% for field in form %}
-        <div style="margin:20px;" gap="20px">
-            {{field.label_tag}}
-            <div gap="20px">{{field}}</div>
-            {% if field.errors%} 
-            {% for error in field.errors %}
-            <div class="alert alert-danger">
-                {{error}}
-            </div>
-            {% endfor %} 
-            {% endif %}
-        </div>
-        {% endfor %}
         <button class="btn-auth" type="submit" style="margin-left:20px;" gap="20px">Сохранить</button>
     </form>
 </body>

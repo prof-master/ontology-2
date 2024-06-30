@@ -32,8 +32,11 @@
     
     
     
+    {% if request.user.is_authenticated %}
+    {% if request.user.id == object.owner.id %}
     <button class="button" onclick="edited()" id="edit">Редактировать</button>
-    
+    {% endif %}
+    {% endif %}
     <div class="title_weapper inter-fz fs-4" gap="20 px">
         Список предикатов
     </div>

@@ -5,70 +5,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'ontology_auth/left-nav-style.css' %}">
+    <link rel="stylesheet" href="{% static 'ontology_auth/style.css' %}">
     <link rel="stylesheet" href="{% static 'ontology_auth/style_profile.css' %}">
     <title>Document</title>
 </head>
 
 <body>
+    <!-- 
+    Скрытый checkbox, отвечающий за переключение панели, должен быть в верхней части документа, лучше сразу после тега `<body>`
 
-    <div class="flex-conteiner">
+    `id` атрибут предназначен для связки с атрибутом `for` тега <label>
 
-        <div class="side_menu_wrapper
-    ">
-            {% if request.user.is_authenticated %}
+    Атрибут `hidden` указывает состояние «скрытый» у текущего элемента
+    -->
+    <input type="checkbox" id="nav-toggle" hidden>
+    <!-- 
+    Выдвижную панель размещаете ниже
+    флажка (checkbox), но не обязательно 
+    непосредственно после него, например
+    можно и в конце страницы
+    -->
+    <nav class="nav">
+        <!-- 
+    Метка с именем `id` чекбокса в `for` атрибуте
+    Символ Unicode 'TRIGRAM FOR HEAVEN' (U+2630)
+    Пустой атрибут `onclick` используем для исправления бага в iOS < 6.0
+    См: http://timpietrusky.com/advanced-checkbox-hack 
+    -->
+        <label for="nav-toggle" class="nav-toggle" onclick></label>
+        <!-- 
+    Здесь размещаете любую разметку,
+    если это меню, то скорее всего неупорядоченный список <ul>
+    -->
+        <h2 class="logo">
+            <a href="//UTMN.SU/">UTMN.SU</a>
+        </h2>
+        <ul>
+            <li><a href="#1">Создание онтологии</a>
+                <li>
+                    <a href="#2">Список онтологий</a>
+                    <li><a href="#3">Личный кабинет</a>
 
-            <div class="user_info_wrapper">
-                <img class="profile_logo" src="{% static 'ontology_auth/alya profile photo.jpg'%}" alt="">
-                <p>{{request.user}}</p>
-            </div>
-
-            {% else %}
-
-            <div class="user_info_wrapper">
-                <img class="profile_logo" src="{% static 'ontology_auth/images.png'%}" alt="">
-                <p>Не авторизован</p>
-            </div>
-
-            {% endif %}
-
-
-            <a href="">
-                <p>Каталог онтологий</p>
-            </a>
-            <a href="">
-                <p>Мои онтологии</p>
-            </a>
-            <a href="">
-                <p>Личный кабинет</p>
-            </a>
-            <a href="">
-                <p>Создать онтологию</p>
-            </a>
-            {% if request.user.is_authenticated %}
-            <div class="logout_wrapper">
-                <img src="{% static 'ontology_auth/logout.png'%}" alt="">
-                <a href="{% url 'logout' %}">Выйти</a>
-            </div>
-            {% else %}
-            <div class="login_wrapper">
-                <img src="{% static 'ontology_auth/login.png'%}" alt="">
-                <a href="{% url 'auth' %}">Войти</a>
-            </div>
-            {% endif%}
-            <!-- <p>МГТУ ИМ Н.Э. Баумана</p> -->
-        </div>
-        <div class="data-conteiner">
-            <H1>Мои онтологии</H1>
-            <h1> Что-то </h1>
-        </div>
-
-    </div>
-
-
-
-
-
-
+        </ul>
+    </nav>
+    <main role="main">
+        <article>
+            <header>
+                <h1 class="header__title">Просто Демо:</h1>
+            </header>
+            <section>
+                Мой профиль
+            </section>
+            <hr>
+            <footer>
+                <p>МГТУ им.Н.Э Баумана
+                    <a href="https://twitter.com/dobrovoi"></a>
+            </footer>
+        </article>
+    </main>
 </body>
+
 
 </html>

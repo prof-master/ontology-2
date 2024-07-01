@@ -44,13 +44,7 @@
 	background: #efefef;
 	border: 1px solid #dddddd;
 }
-.table-2 th:hover {
-	font-weight: bold;
-	padding: 5px;
-    color: black;
-	background: #efefef;
-	border: 1px solid #dddddd;
-}
+
 .table-2 td {
 	border: 1px solid #dddddd;
 	padding: 5px;

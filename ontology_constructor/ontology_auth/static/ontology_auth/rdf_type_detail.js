@@ -12,7 +12,8 @@ function make_readonly()
     var subm = document.getElementById("subm");
     var edit = document.getElementById("edit");
     subm.style.display = 'none';
-    edit.style.display = 'block';
+    if (edit)
+        edit.style.display = 'block';
     idname.disabled = true;
     idaccess.disabled = true;
     idontology.disabled = true;
@@ -29,7 +30,8 @@ function edited()
     var subm = document.getElementById("subm");
     var edit = document.getElementById("edit");
     subm.style.display = 'block';
-    edit.style.display = 'none';
+    if (edit)
+        edit.style.display = 'none';
     idname.disabled = false;
     idaccess.disabled = false;
     idontology.disabled = false;

@@ -78,11 +78,7 @@
                             <td class="inter-fz-1 " onclick="window.location.href='/ontology/{{ ontology.id }}' ; return false ">{{ontology.access}}</td>
                             <td class="inter-fz-1 " onclick="window.location.href='/ontology/{{ ontology.id }}' ; return false ">{{ontology.created_at}}</td>
                             <td class="inter-fz-1 " onclick="window.location.href='/ontology/{{ ontology.id }}' ; return false ">{{ontology.owner}}</td>
-                            <td>
-                                <form action=" " method="get ">
-                                    <button class="button inter-fz-1 " name="delete_ontology " value="{{ ontology.id }} ">Удалить</button>
-                                </form>
-                            </td>
+                            
                         </tr>
                     </div>
                     {% empty %}

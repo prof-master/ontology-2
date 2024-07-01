@@ -54,12 +54,13 @@
             <a href="//UTMN.SU/">UTMN.SU</a>
         </h2>
         <ul>
-            <li><a href="#1">Создание онтологии</a>
-                <li>
-                    <a href="#2">Список онтологий</a>
-                    <li><a href="#3">Личный кабинет</a> {% if request.user.is_authenticated %}
-                        <li><a href="{%url 'logout' %}">Выйти</a> {% else %}
-                            <li><a href="{%url 'auth' %}">Войти</a> {% endif %}
+            <li>
+                <a href="{%url 'add_ontology' %}">Создание онтологии</a>
+                <li><a href=" {%url 'ontology_list_1' %} ">Список онтологий</a>
+                    <li><a href="{%url 'profile' %} ">Личный кабинет</a> {% if request.user.is_authenticated %}
+                        <li><a href="{%url 'logout' %} ">Выйти</a> {% else %}
+                            <li><a href="{%url 'auth' %} ">Войти</a> {% endif %}
+
 
         </ul>
     </nav>

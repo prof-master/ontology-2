@@ -76,7 +76,7 @@ input[type="password"] {
     height: 100%;
 }
 
-input[type="email"]::-webkit-input-placeholder {
+input[type="text"]::-webkit-input-placeholder {
     color: #828282;
     font-weight: 350;
     font-size: 18px;
@@ -85,7 +85,7 @@ input[type="email"]::-webkit-input-placeholder {
     padding-left: 10px;
 }
 
-input[type="email"]::-moz-placeholder {
+input[type="text"]::-moz-placeholder {
     color: #ff0000;
     font-weight: 350;
     font-size: 18px;
@@ -131,7 +131,7 @@ input[type="password"]::-moz-placeholder {
     justify-content: center;
 }
 
-form input[type=text] {
+form input[type=text]:not(.username) {
     color: black;
     font-weight: 500;
     font-size: 23px;

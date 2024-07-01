@@ -52,12 +52,14 @@ class UserRegForm(UserCreationForm):
     email = forms.EmailField()
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1','last_name']
+        fields = ['username', 'email', 'password1']
     def __init__(self, *args, **kwargs):
         super(UserRegForm, self).__init__(*args, **kwargs)
         del self.fields['password2']
         self.fields['password1'].help_text = None
-        self.fields['username'].help_text = None
+        self.fields['username'].widget.attrs.update({ "placeholder": "Имя пользователя"})
+        self.fields['email'].widget.attrs.update({ "placeholder": "E-mail"})
+        self.fields['password1'].widget.attrs.update({ "placeholder": "Пароль"})
 
 
 

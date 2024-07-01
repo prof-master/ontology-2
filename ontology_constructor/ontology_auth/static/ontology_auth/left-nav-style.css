@@ -283,7 +283,7 @@ body {
     bottom: 0;
     height: 1px;
     width: 100%;
-    background: #ffffff;
+    background: red;
     -webkit-transition: width .5s ease;
     transition: width .5s ease;
 }

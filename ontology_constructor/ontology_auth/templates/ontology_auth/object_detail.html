@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="{% static 'ontology_auth/style.css' %}">
     <link rel="stylesheet" href="{% static 'ontology_auth/style_profile.css' %}">
     <link rel="stylesheet" href="{% static 'ontology_auth/style_auth.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="{% static 'ontology_auth/favicon.ico' %}" />
     <title>Объект {{object.name}}</title>
     <link rel="stylesheet" href="{% static 'ontology_auth/detail.css' %}">
@@ -58,66 +57,63 @@
             <li><a href="#1">Создание онтологии</a>
                 <li>
                     <a href="#2">Список онтологий</a>
-                    <li><a href="#3">Личный кабинет</a>
+                    <li><a href="#3">Личный кабинет</a> {% if request.user.is_authenticated %}
+                        <li><a href="{%url 'logout' %}">Выйти</a> {% else %}
+                            <li><a href="{%url 'auth' %}">Войти</a> {% endif %}
 
         </ul>
     </nav>
     <main role="main">
-     <div class="title_weapper inter-fz fs-2" gap="20 px">
-        Объект
-    </div>
-    <form method="POST" action="/object/{{object.id}}/update">
-        {% csrf_token %}
-        {% for field in form %}
-        <div>
-             {{field}}
+        <div class="title_weapper inter-fz fs-2" gap="20 px">
+            Объект
         </div>
-        {% endfor %}
-        <div class="inter-fz fs-4" gap="20 px">
-            {{ object.created_at}}
+        <form method="POST" action="/object/{{object.id}}/update">
+            {% csrf_token %} {% for field in form %}
+            <div>
+                {{field}}
+            </div>
+            {% endfor %}
+            <div class="inter-fz fs-4" gap="20 px">
+                {{ object.created_at}}
+            </div>
+            <div>
+                <button class="button inter-fz fs-6" type="submit" id="subm" name="subm_ont" value="{{ object.id }}">Сохранить</button>
+            </div>
+        </form>
+
+
+
+        {% if request.user.is_authenticated %} {% if request.user.id == object.owner.id %}
+        <button class="button" onclick="edited()" id="edit">Редактировать</button> {% endif %} {% endif %}
+        <div class="title_weapper inter-fz fs-4" gap="20 px">
+            Список предикатов
         </div>
-        <div>
-            <button class="button inter-fz fs-6" type="submit" id="subm" name="subm_ont" value="{{ object.id }}">Сохранить</button>
-        </div>
-    </form>
-    
-    
-    
-    {% if request.user.is_authenticated %}
-    {% if request.user.id == object.owner.id %}
-    <button class="button" onclick="edited()" id="edit">Редактировать</button>
-    {% endif %}
-    {% endif %}
-    <div class="title_weapper inter-fz fs-4" gap="20 px">
-        Список предикатов
-    </div>
-    {% block content %}
-    <table class="table-2">
-        <thead class="inter-fz">
+        {% block content %}
+        <table class="table-2">
+            <thead class="inter-fz">
                 <th>Наименование онтологии</th>
                 <th>Наименование субъекта</th>
                 <th>Наименование предиката</th>
                 <th>Наименование объекта</th>
                 <th>Дата создания</th>
                 <th>Описание</th>
-        </thead>
-        {% for rdf_type in rdf_types %}
-        <div class="inter-fz" gap="20px">
-            <tr onclick="window.location.href='/rdf_type/{{ rdf_type.id }}'; return false">
-                <td class="inter-fz-1">{{rdf_type.ontology}}</td>
-                <td class="inter-fz-1">{{rdf_type.subject}}</td>
-                <td class="inter-fz-1">{{rdf_type.name}}</td>
-                <td class="inter-fz-1">{{rdf_type.object}}</td>
-                <td class="inter-fz-1">{{rdf_type.created_at}}</td>
-                <td class="inter-fz-1">{{rdf_type.description}}</td>
-            </tr>
-        </div>
+            </thead>
+            {% for rdf_type in rdf_types %}
+            <div class="inter-fz" gap="20px">
+                <tr onclick="window.location.href='/rdf_type/{{ rdf_type.id }}'; return false">
+                    <td class="inter-fz-1">{{rdf_type.ontology}}</td>
+                    <td class="inter-fz-1">{{rdf_type.subject}}</td>
+                    <td class="inter-fz-1">{{rdf_type.name}}</td>
+                    <td class="inter-fz-1">{{rdf_type.object}}</td>
+                    <td class="inter-fz-1">{{rdf_type.created_at}}</td>
+                    <td class="inter-fz-1">{{rdf_type.description}}</td>
+                </tr>
+            </div>
 
-        {% endfor %} 
-        {% endblock %}
+            {% endfor %} {% endblock %}
 
 
-    </table>
+        </table>
     </main>
 </body>
 

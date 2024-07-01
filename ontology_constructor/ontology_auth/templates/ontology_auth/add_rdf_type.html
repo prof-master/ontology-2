@@ -45,36 +45,38 @@
             <a href="//UTMN.SU/">UTMN.SU</a>
         </h2>
         <ul>
-            <li><a href="#1">Создание онтологии</a>
-                <li>
-                    <a href="#2">Список онтологий</a>
-                    <li><a href="#3">Личный кабинет</a>
+            <li>
+                <a href="{%url 'add_ontology' %}">Создание онтологии</a>
+                <li><a href=" {%url 'ontology_list_1' %} ">Список онтологий</a>
+                    <li><a href="{%url 'profile' %} ">Личный кабинет</a> {% if request.user.is_authenticated %}
+                        <li><a href="{%url 'logout' %} ">Выйти</a> {% else %}
+                            <li><a href="{%url 'auth' %} ">Войти</a> {% endif %}
+
 
         </ul>
     </nav>
     <main role="main">
-<form method="POST">
-        <div class="name_wrapper">
-            <div class="title_weapper inter-fz fs-2" style="margin-left:20px;">
-                <p>Создание предиката</p>
+        <form method="POST">
+            <div class="name_wrapper">
+                <div class="title_weapper inter-fz fs-2" style="margin-left:20px;">
+                    <p>Создание предиката</p>
+                </div>
             </div>
-        </div> 
-        {% csrf_token %}
-        {{form.name.label_tag}}
-        <div>{{form.name}}</div>
-        {{form.description.label_tag}}
-        <div>{{form.description}}</div>
-        
-        <div class="container-1">
-            {{form.subject.label_tag}}
-            <div>{{form.subject}}</div>
-            {{form.object.label_tag}}
-            <div>{{form.object}}</div>
-            {{form.ontology.label_tag}}
-            <div>{{form.ontology}}</div>
-        </div>
-        <button class="btn-auth" type="submit" style="margin-left:20px;" gap="20px">Сохранить</button>
-    </form>
+            {% csrf_token %} {{form.name.label_tag}}
+            <div>{{form.name}}</div>
+            {{form.description.label_tag}}
+            <div>{{form.description}}</div>
+
+            <div class="container-1">
+                {{form.subject.label_tag}}
+                <div>{{form.subject}}</div>
+                {{form.object.label_tag}}
+                <div>{{form.object}}</div>
+                {{form.ontology.label_tag}}
+                <div>{{form.ontology}}</div>
+            </div>
+            <button class="btn-auth" type="submit" style="margin-left:20px;" gap="20px">Сохранить</button>
+        </form>
     </main>
 </body>
 

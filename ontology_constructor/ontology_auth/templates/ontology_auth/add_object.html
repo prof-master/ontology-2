@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'ontology_auth/left-nav-style.css' %}">
     <link rel="stylesheet" href="{% static 'ontology_auth/style.css' %}">
+    <link rel="stylesheet" href="{% static 'ontology_auth/style_add.css' %}">
     <link rel="stylesheet" href="{% static 'ontology_auth/style_profile.css' %}">
     <title>Создание субъекта</title>
     <link rel="stylesheet" href="{% static 'ontology_auth/style_auth.css' %}">
@@ -15,34 +16,12 @@
 </head>
 
 <body>
-    <!-- 
-    Скрытый checkbox, отвечающий за переключение панели, должен быть в верхней части документа, лучше сразу после тега `<body>`
-
-    `id` атрибут предназначен для связки с атрибутом `for` тега <label>
-
-    Атрибут `hidden` указывает состояние «скрытый» у текущего элемента
-    -->
     <input type="checkbox" id="nav-toggle" hidden>
-    <!-- 
-    Выдвижную панель размещаете ниже
-    флажка (checkbox), но не обязательно 
-    непосредственно после него, например
-    можно и в конце страницы
-    -->
     <nav class="nav">
-        <!-- 
-    Метка с именем `id` чекбокса в `for` атрибуте
-    Символ Unicode 'TRIGRAM FOR HEAVEN' (U+2630)
-    Пустой атрибут `onclick` используем для исправления бага в iOS < 6.0
-    См: http://timpietrusky.com/advanced-checkbox-hack 
-    -->
         <label for="nav-toggle" class="nav-toggle" onclick></label>
-        <!-- 
-    Здесь размещаете любую разметку,
-    если это меню, то скорее всего неупорядоченный список <ul>
-    -->
+
         <h2 class="logo">
-            <a href="//UTMN.SU/">UTMN.SU</a>
+            <a href="{% url 'index' %}">UTMN.SU</a>
         </h2>
         <ul>
             <li>
@@ -59,22 +38,22 @@
         {% block content %}
         <form method="POST">
             <div class="name_wrapper">
-                <div class="title_weapper inter-fz fs-2" style="margin-left:20px;">
+                <div class="title_weapper inter-fz fs-2 ml-20">
                     <p>Создание объекта</p>
                 </div>
             </div>
             {% csrf_token %} {% for field in form %}
-            <div style="margin:20px;" gap="20px">
+            <div class="block-gap m20 ">
                 {{field.label_tag}}
-                <div gap="20px">{{field}}</div>
+                <div class="block-gap">{{field}}</div>
                 {% if field.errors%} {% for error in field.errors %}
-                <div class="alert alert-danger">
+                <div class="alert alert-danger ">
                     {{error}}
                 </div>
                 {% endfor %} {% endif %}
             </div>
             {% endfor %}
-            <button class="btn-auth" type="submit" style="margin-left:20px;" gap="20px">Сохранить</button>
+            <button class="btn-auth block-gap ml-20" type="submit">Сохранить</button>
         </form>
         {% endblock %}
     </main>

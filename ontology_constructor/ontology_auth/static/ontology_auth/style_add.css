@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
 input[type="text"]::-moz-placeholder {
     color: #828282;
     font-weight: 350;
@@ -7,20 +6,51 @@ input[type="text"]::-moz-placeholder {
     font-family: "Inter", sans-serif;
     line-height: 30px;
     opacity: 1;
-;
+    ;
 }
+
 .inter-fz {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
-    font-variation-settings:
-        "slnt" 0;
+    font-variation-settings: "slnt" 0;
 }
 
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.ml-30 {
+    margin-left: 30px;
+}
+
+.block-gap {
+    gap: 20px;
+}
+
+.ml-80 {
+    margin-left: 80px;
+}
+
+.m20 {
+    margin: 20px;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
 
 .center_content {
     padding: 120px;
+}
+
+.tc {
+    text-align: center;
+}
+
+.pl-48 {
+    padding-left: 48px;
 }
 
 .btn_wrappr>button {
@@ -32,7 +62,6 @@ input[type="text"]::-moz-placeholder {
     color: white;
     font-family: "Inter", sans-serif;
     padding: 24px, 32px, 24px, 32px;
-
 }
 
 .ipt_wrapper>input {
@@ -41,9 +70,7 @@ input[type="text"]::-moz-placeholder {
     border-radius: 8px;
     border: #E0E0E0 solid 1px;
     padding-left: 10px;
-    
 }
-
 
 .inter-font-64 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -55,10 +82,10 @@ input[type="text"]::-moz-placeholder {
     padding-top: 32px;
 }
 
-.fs-36
-{
+.fs-36 {
     font-size: 24px;
 }
+
 
 /* input[type="email"]::-webkit-input-placeholder {
     
@@ -75,6 +102,7 @@ input[type="email"]::-moz-placeholder {
     flex-direction: row;
     width: 80%;
 }
-.g-color{
+
+.g-color {
     color: #828282;
 }

@@ -8,25 +8,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'ontology_auth/style_index.css' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'ontology_auth/favicon.ico' %}" />
-
-    <!-- Добавить наследование favicon.ico для всех страниц сайта -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"> -->
-    <!-- Добавление шрифта -->
-
-
-
     <title>UTMN.su - конструктор онтологий</title>
 </head>
 
 <body>
 
 
-    <div class="d-flex flex-column justify-content-center align-items-center center_content p-4" style="gap: 72px;">
-        <!-- УБРАТЬ АТРИБУТ STYLE -->
-        <div class="d-flex flex-row justify-content-center align-content-center" style="gap: 12px;">
-            <!-- УБРАТЬ АТРИБУТ STYLE -->
+    <div class="d-flex flex-column justify-content-center align-items-center center_content p-4 gap-72">
+
+        <div class="d-flex flex-row justify-content-center align-content-center gap-12">
+
             <a class="p-2 text-decoration-none text-reset" href="{% url 'profile'%}">
                 <p class="link_wrapper_content inter-font">Личный кабинет</p>
             </a>
@@ -49,19 +40,17 @@
             </div>
         </div>
 
-        <div class="ipt_btn_wrapper d-flex flex-row justify-content-center" style="gap: 8px;">
+        <div class="ipt_btn_wrapper d-flex flex-row justify-content-center gap-8">
 
             <div class="ipt_wrapper h-auto">
             </div>
             <div class="btn_wrappr">
                 <a class="btn_wrappr" href="
-                
                 {% if request.user.is_authenticated %}
-    {%url 'profile' %}
-{% else %}
-    {%url 'register' %}
-{% endif %}
-                
+                    {%url 'profile' %}
+                {% else %}
+                    {%url 'register' %}
+                {% endif %}
                 "><button>Начать</button></a>
             </div>
 

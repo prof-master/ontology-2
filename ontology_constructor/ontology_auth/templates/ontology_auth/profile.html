@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'ontology_auth/left-nav-style.css' %}">
+    <link rel="stylesheet" href="{% static 'ontology_auth/style_add.css' %}">
     <link rel="stylesheet" href="{% static 'ontology_auth/style_ontology_list.css' %}">
 
     <link rel="stylesheet" href="{% static 'ontology_auth/style_profile.css' %}">
@@ -14,34 +15,14 @@
 </head>
 
 <body>
-    <!-- 
-    Скрытый checkbox, отвечающий за переключение панели, должен быть в верхней части документа, лучше сразу после тега `<body>`
-
-    `id` атрибут предназначен для связки с атрибутом `for` тега <label>
-
-    Атрибут `hidden` указывает состояние «скрытый» у текущего элемента
-    -->
     <input type="checkbox" id="nav-toggle" hidden>
-    <!-- 
-    Выдвижную панель размещаете ниже
-    флажка (checkbox), но не обязательно 
-    непосредственно после него, например
-    можно и в конце страницы
-    -->
+
     <nav class="nav">
-        <!-- 
-    Метка с именем `id` чекбокса в `for` атрибуте
-    Символ Unicode 'TRIGRAM FOR HEAVEN' (U+2630)
-    Пустой атрибут `onclick` используем для исправления бага в iOS < 6.0
-    См: http://timpietrusky.com/advanced-checkbox-hack 
-    -->
+
         <label for="nav-toggle" class="nav-toggle" onclick></label>
-        <!-- 
-    Здесь размещаете любую разметку,
-    если это меню, то скорее всего неупорядоченный список <ul>
-    -->
+
         <h2 class="logo">
-            <a href="//UTMN.SU/">UTMN.SU</a>
+            <a href="{% url 'index' %}">UTMN.SU</a>
         </h2>
         <ul>
             <li>
@@ -55,7 +36,7 @@
         </ul>
     </nav>
     <main role="main ">
-        <section style="padding-left: 48px; ">
+        <section class="pl-48">
 
             {% if request.user.is_authenticated %}
             <h1> Добро пожаловать, {{ user.get_username }}</h1>
@@ -72,17 +53,17 @@
                         <th></th>
                     </thead>
                     {% for ontology in my_ontologys %}
-                    <div class="inter-fz " gap="20px ">
+                    <div class="inter-fz block-gap">
                         <tr>
                             <td class="inter-fz-1 " onclick="window.location.href='/ontology/{{ ontology.id }}' ; return false ">{{ontology.name}}</td>
                             <td class="inter-fz-1 " onclick="window.location.href='/ontology/{{ ontology.id }}' ; return false ">{{ontology.access}}</td>
                             <td class="inter-fz-1 " onclick="window.location.href='/ontology/{{ ontology.id }}' ; return false ">{{ontology.created_at}}</td>
                             <td class="inter-fz-1 " onclick="window.location.href='/ontology/{{ ontology.id }}' ; return false ">{{ontology.owner}}</td>
-                            
+
                         </tr>
                     </div>
                     {% empty %}
-                    <div class="title_weapper inter-fz fs-2 " style="margin-left:20px; ">
+                    <div class="title_weapper inter-fz fs-2 ml-20">
                         <p>У вас пока нет онтологий!</p>
                     </div>
                     {% endfor %}

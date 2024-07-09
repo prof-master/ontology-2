@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'ontology_auth/left-nav-style.css' %}">
     <link rel="stylesheet" href="{% static 'ontology_auth/style.css' %}">
+    <link rel="stylesheet" href="{% static 'ontology_auth/style_add.css' %}">
     <link rel="stylesheet" href="{% static 'ontology_auth/style_profile.css' %}">
     <title>Создание субъекта</title>
     <link rel="stylesheet" href="{% static 'ontology_auth/style_auth.css' %}">
@@ -15,34 +16,12 @@
 </head>
 
 <body>
-    <!-- 
-    Скрытый checkbox, отвечающий за переключение панели, должен быть в верхней части документа, лучше сразу после тега `<body>`
-
-    `id` атрибут предназначен для связки с атрибутом `for` тега <label>
-
-    Атрибут `hidden` указывает состояние «скрытый» у текущего элемента
-    -->
     <input type="checkbox" id="nav-toggle" hidden>
-    <!-- 
-    Выдвижную панель размещаете ниже
-    флажка (checkbox), но не обязательно 
-    непосредственно после него, например
-    можно и в конце страницы
-    -->
+
     <nav class="nav">
-        <!-- 
-    Метка с именем `id` чекбокса в `for` атрибуте
-    Символ Unicode 'TRIGRAM FOR HEAVEN' (U+2630)
-    Пустой атрибут `onclick` используем для исправления бага в iOS < 6.0
-    См: http://timpietrusky.com/advanced-checkbox-hack 
-    -->
         <label for="nav-toggle" class="nav-toggle" onclick></label>
-        <!-- 
-    Здесь размещаете любую разметку,
-    если это меню, то скорее всего неупорядоченный список <ul>
-    -->
         <h2 class="logo">
-            <a href="//UTMN.SU/">UTMN.SU</a>
+            <a href="{% url 'index' %}">UTMN.SU</a>
         </h2>
         <ul>
             <li>
@@ -52,13 +31,12 @@
                         <li><a href="{%url 'logout' %} ">Выйти</a> {% else %}
                             <li><a href="{%url 'auth' %} ">Войти</a> {% endif %}
 
-
         </ul>
     </nav>
     <main role="main">
         <form method="POST">
             <div class="name_wrapper">
-                <div class="title_weapper inter-fz fs-2" style="margin-left:20px;">
+                <div class="title_weapper inter-fz fs-2 ml-20">
                     <p>Создание предиката</p>
                 </div>
             </div>
@@ -75,7 +53,7 @@
                 {{form.ontology.label_tag}}
                 <div>{{form.ontology}}</div>
             </div>
-            <button class="btn-auth" type="submit" style="margin-left:20px;" gap="20px">Сохранить</button>
+            <button class="btn-auth ml-20 block-gap" type="submit">Сохранить</button>
         </form>
     </main>
 </body>

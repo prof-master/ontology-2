@@ -260,3 +260,64 @@ def logout_func(request):
 # @login_required
 # def profile(request):
 #     return render(request, 'ontology_auth/profile.html')
+
+
+
+
+
+
+
+
+
+
+
+# Обработка ошибок
+
+def error_400(request, exception):
+    
+    return render(request, 'error_pages/400_page.html', {'path': request.path}, status=400)
+
+def error_401(request, exception):
+    
+    return render(request, 'error_pages/401_page.html', {'path': request.path}, status=401)
+
+def error_403(request, exception):
+    
+    return render(request, 'error_pages/403_page.html', {'path': request.path}, status=403)
+
+
+def error_404(request, exception):
+    
+    return render(request, 'error_pages/404_page.html', {'path': request.path}, status=404)
+
+
+def error_405(request, exception):
+    
+    return render(request, 'error_pages/404_page.html', {'path': request.path}, status=405)
+
+def error_500(request, *args, **argv):
+    
+    return render(request, 'error_pages/500_page.html', status=500)
+
+def error_501(request,  exception):
+    
+    return render(request, 'error_pages/501_page.html', {'path': request.path}, status=501)
+
+def error_502(request, exception):
+    
+    return render(request, 'error_pages/502_page.html', {'path': request.path}, status=502)
+
+def error_503(request, exception):
+    
+    return render(request, 'error_pages/503_page.html', {'path': request.path}, status=503)
+
+def error_504(request, exception):
+    
+    return render(request, 'error_pages/504_page.html', {'path': request.path}, status=504)
+
+
+
+
+
+
+

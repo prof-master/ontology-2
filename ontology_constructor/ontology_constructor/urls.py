@@ -18,6 +18,26 @@ from django.contrib import admin
 from django.urls import path,include
 from ontology_auth.views import index,auth,profile, constructor, add_ontology, ontology_list_1, register,ontology_detail, add_subject, add_object, add_rdf_type, login,logout_func, update_ontology, object_update, subject_detail, subject_update, rdf_type_detail, rdf_type_update
 from ontology_auth.views import index,auth,profile, test_menu, constructor, add_ontology, ontology_list_1, register,ontology_detail, add_subject, add_object, add_rdf_type, login,logout_func, update_ontology, object_detail
+
+from ontology_auth.views import error_400, error_401, error_403 ,error_404,error_405,error_500, error_501, error_502, error_503 , error_504
+
+handler400 = error_400
+handler401 = error_401
+handler403 = error_403
+handler404 = error_404
+handler405 = error_405
+handler500 = error_500
+handler501 = error_501
+handler502 = error_502
+handler503 = error_503
+handler504 = error_504
+
+
+
+
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index,name='index'),

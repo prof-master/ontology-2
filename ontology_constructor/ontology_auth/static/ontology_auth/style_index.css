@@ -11,6 +11,10 @@
     padding: 120px;
 }
 
+.error_code {
+    font-size: 120px;
+}
+
 .btn_wrappr>button {
     background-color: black;
     border-radius: 8px;
